@@ -19,7 +19,7 @@ export const projectsData: ProjectItem[] = [
     title: "Cosmo",
     bgGradient: "bg-gradient-to-b from-[#F8F4EE] via-[#9E7A5A] to-[#5C3F28] dark:from-[#2E2218] dark:via-[#21170F] dark:to-[#140D08]",
     image: "/images/projects/COSMO/L1.png",
-    link: "#",
+    link: "/projects/cosmo",
   },
   {
     id: "inlay",

@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import { ProjectItem } from "@/data/projects";
 
 interface ProjectCardProps {
@@ -14,8 +15,10 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     setImgError(false);
   }, [project.image]);
 
-  return (
-    <div className="group flex flex-col gap-2.5 sm:gap-3 w-full select-none">
+  const hasLink = Boolean(project.link && project.link !== "#");
+
+  const cardInner = (
+    <div className={`group flex flex-col gap-2.5 sm:gap-3 w-full select-none ${hasLink ? "cursor-pointer" : ""}`}>
       
       {/* 1. Top Frame: Image Card (Scales to full column width) */}
       <div className="relative w-full aspect-[600/1352] rounded-2xl lg:rounded-[22px] overflow-hidden bg-stone-100 dark:bg-stone-800/80 border border-black/8 dark:border-white/10 shadow-sm transition-all duration-500 group-hover:-translate-y-1.5 group-hover:shadow-xl flex items-center justify-center">
@@ -50,4 +53,15 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
     </div>
   );
+
+  if (hasLink && project.link) {
+    return (
+      <Link href={project.link} className="block w-full focus:outline-none">
+        {cardInner}
+      </Link>
+    );
+  }
+
+  return cardInner;
 }
+
