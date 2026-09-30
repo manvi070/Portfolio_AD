@@ -49,8 +49,8 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   title: {
-    default: "Manvi Gupta — Furniture & Product Designer",
-    template: "%s | Manvi Gupta",
+    default: "Manvi Gupta_Portfolio",
+    template: "%s | Manvi Gupta_Portfolio",
   },
   description: "Portfolio of Manvi Gupta, a Furniture & Product Designer crafting intuitive digital and physical experiences.",
   icons: {
