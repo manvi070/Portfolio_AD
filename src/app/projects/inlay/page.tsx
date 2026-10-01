@@ -6,24 +6,28 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowDown, ChevronLeft, ChevronRight, X, Maximize2 } from "lucide-react";
 import Contact from "@/components/Contact";
 
+/**
+ * -----------------------------------------------------------------------
+ * INLAY PROJECT TEMPLATE (Mirrored from Cosmo)
+ * -----------------------------------------------------------------------
+ * You can replace text descriptions, titles, and image paths below.
+ * Replace placeholder image paths with your actual project assets in:
+ * /public/images/projects/INLAY/...
+ */
+
+// 1. Switchable exploration tabs data
 const explorationTabs = [
   {
-    id: "patterns",
-    label: "Pattern exploration",
-    src: "/images/projects/COSMO/patterns.png",
-    alt: "Cosmo Pattern Exploration",
-  },
-  {
-    id: "sketches",
-    label: "Sketches",
-    src: "/images/projects/COSMO/sketches.png",
-    alt: "Cosmo Concept Sketches",
+    id: "explorations",
+    label: "Explorations",
+    src: "/images/projects/INLAY/sketch.png",
+    alt: "Inlay Concept Explorations",
   },
   {
     id: "renders",
     label: "3d renders",
-    src: "/images/projects/COSMO/renders.png",
-    alt: "Cosmo 3D Renders",
+    src: "/images/projects/INLAY/renders.png",
+    alt: "Inlay 3D Renders",
   },
 ] as const;
 
@@ -42,146 +46,54 @@ export interface ProductItem {
   }[];
 }
 
+// 2. Final Prototypes products data (2 mirrors)
 const finalCollectionProducts: ProductItem[] = [
   {
-    id: "cosmic-mirror",
+    id: "mirror-1",
     number: "1.",
-    name: "Cosmic mirror",
+    name: "Mirror 1",
     description:
-      "This mirror’s infinity-derived form represents the eternal, continuous nature of self-reflection and personal growth. Its balanced, interlocking circles depict a sense of harmony and duality. emotionally and spiritually, it serves as a daily reminder of your limitless potential and inner balance.",
-    images: [
-      {
-        id: "m1",
-        src: "/images/projects/COSMO/m1.jpg",
-        alt: "Cosmic Mirror - Full Front View",
-        title: "Front Silhouette",
-      },
-      {
-        id: "m2",
-        src: "/images/projects/COSMO/m2.jpg",
-        alt: "Cosmic Mirror - Perspective Wall Mount",
-        title: "Perspective View",
-      },
-      {
-        id: "m3",
-        src: "/images/projects/COSMO/m3.jpg",
-        alt: "Cosmic Mirror - Upper Crescent Detail",
-        title: "Upper Brass Crescent",
-      },
-      {
-        id: "m4",
-        src: "/images/projects/COSMO/m4.jpg",
-        alt: "Cosmic Mirror - Waist Crescent Detail",
-        title: "Waist Joint Accent",
-      },
-    ],
-  },
-  {
-    id: "wall-sconce",
-    number: "2.",
-    name: "Wall sconce",
-    description:
-      "Inspired by the Yin Yang, this design represents the balance of opposing yet complementary forces. It depicts harmony and dual nature. Spiritually, it symbolizes oneness and a holistic worldview.",
-    images: [
-      {
-        id: "s1",
-        src: "/images/projects/COSMO/s1.jpg",
-        alt: "Wall Sconce - Studio Silhouette",
-        title: "Studio Silhouette",
-      },
-      {
-        id: "s3",
-        src: "/images/projects/COSMO/s3.jpg",
-        alt: "Wall Sconce - Ambient Warm Glow",
-        title: "Ambient Warm Glow",
-      },
-    ],
-  },
-  {
-    id: "pendant-light",
-    number: "3.",
-    name: "Pendant light",
-    description:
-      "Inspired by the Quatrefoil / four-petaled motif of the Flower of Life, this design symbolizes universal harmony, creation, and balance across the four cardinal directions. As it radiates light outward, it emotionally creates a grounded, calming atmosphere while spiritually representing clarity, divine alignment, and inner peace.",
-    images: [
-      {
-        id: "l1",
-        src: "/images/projects/COSMO/l1.jpg",
-        alt: "Pendant Light - Silhouette & Shade Perspective",
-        title: "Side Silhouette",
-      },
-      {
-        id: "l2",
-        src: "/images/projects/COSMO/l2.jpg",
-        alt: "Pendant Light - Quatrefoil Bottom Geometry",
-        title: "Quatrefoil Geometry",
-      },
-    ],
-  },
-  {
-    id: "candle-stand",
-    number: "4.",
-    name: "Candle Stand",
-    description:
-      "Inspired by the Trefoil / Triquetra woven with the sacred Triangle, this piece symbolises interconnectedness, truth, and higher consciousness. Emotionally, it inspires feelings of guidance, clarity, and protected presence, and spiritually, it serves as a powerful focus for meditation.",
-    images: [
-      {
-        id: "c1",
-        src: "/images/projects/COSMO/c1.jpg",
-        alt: "Candle Stand - Studio Silhouette",
-        title: "Studio Silhouette",
-      },
-      {
-        id: "c2",
-        src: "/images/projects/COSMO/c2.jpg",
-        alt: "Candle Stand - Perspective Detail",
-        title: "Perspective Detail",
-      },
-    ],
-  },
-  {
-    id: "ripple-mirror",
-    number: "5.",
-    name: "Ripple mirror (renders)",
-    description: (
-      <>
-        Framed in a sacred <span className="text-stone-100 font-semibold">quatrefoil</span> silhouette, this mirror symbolizes balance, creation, and universal harmony. The central star and expanding ripple motif depict cosmic energy flowing from the core outward. Spiritually, it acts as a calming focal point to bring inner alignment, peace, and clarity.
-      </>
-    ),
+      "Brass inlay pattern on stainless steel body, granite (stone base)",
     images: [
       {
         id: "mr1",
-        src: "/images/projects/COSMO/mr1.jpg",
-        alt: "Ripple Mirror - Sacred Quatrefoil Silhouette Render",
-        title: "Quatrefoil Silhouette",
+        src: "/images/projects/INLAY/mr1.png",
+        alt: "Mirror 1 - Full Silhouette",
+        title: "Full Silhouette",
       },
       {
+        id: "d2",
+        src: "/images/projects/INLAY/d2.png",
+        alt: "Mirror 1 - Brass Inlay Detail",
+        title: "Brass Inlay Detail",
+      },
+    ],
+  },
+  {
+    id: "mirror-2",
+    number: "2.",
+    name: "Mirror 2",
+    description:
+      "Brass inlay pattern on stainless steel body, granite (stone base)",
+    images: [
+      {
         id: "mr2",
-        src: "/images/projects/COSMO/mr2.jpg",
-        alt: "Ripple Mirror - Expanding Core Ripple Detail",
-        title: "Core Ripple Detail",
+        src: "/images/projects/INLAY/mr2.png",
+        alt: "Mirror 2 - Full Silhouette",
+        title: "Full Silhouette",
+      },
+      {
+        id: "d1",
+        src: "/images/projects/INLAY/d1.png",
+        alt: "Mirror 2 - Brass Inlay Detail",
+        title: "Brass Inlay Detail",
       },
     ],
   },
 ];
 
-const ihgfDisplayImages = [
-  {
-    id: "d1",
-    src: "/images/projects/COSMO/d1.jpeg",
-    alt: "IHGF Delhi Spring Fair 2025 - Exhibition Stall Display",
-    title: "Exhibition Stall Display",
-  },
-  {
-    id: "d2",
-    src: "/images/projects/COSMO/d2.jpeg",
-    alt: "IHGF Delhi Spring Fair 2025 - Exhibition Showcase Wall",
-    title: "Showcase Wall View",
-  },
-] as const;
-
-export default function CosmoProjectPage() {
-  const [activeTab, setActiveTab] = useState<TabId>("renders");
+export default function InlayProjectPage() {
+  const [activeTab, setActiveTab] = useState<TabId>("explorations");
   const currentTab = explorationTabs.find((tab) => tab.id === activeTab) || explorationTabs[0];
 
   const [activeGallery, setActiveGallery] = useState<{
@@ -256,94 +168,69 @@ export default function CosmoProjectPage() {
             Work
           </Link>
           <span>/</span>
-          <span className="text-stone-900 font-semibold">Cosmo</span>
+          <span className="text-stone-900 font-semibold">Inlay</span>
         </motion.div>
 
-        {/* Project Header Info */}
+        {/* HERO & BRIEF SECTION: Cover Image on Left, Title/Mirrors/Brief on Right */}
         <motion.section
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
-          className="flex flex-col gap-3 w-full"
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="w-full pt-2 sm:pt-4"
         >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-mono font-bold tracking-tight text-stone-950">
-            Cosmo
-          </h1>
-
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-1 w-full">
-            <span className="text-lg sm:text-xl md:text-2xl font-mono text-stone-700 font-medium tracking-tight">
-              Wall Decor Collection
-            </span>
-
-            <div className="flex items-center gap-3 sm:gap-4 shrink-0">
-              <span className="text-xs sm:text-sm md:text-base font-mono text-stone-500 whitespace-nowrap">
-                Also displayed at :
-              </span>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+            
+            {/* Left Column: Cover Image (cover.png) */}
+            <div className="w-full overflow-hidden rounded-2xl sm:rounded-3xl shadow-md border border-black/8 bg-stone-50">
               <img
-                src="/images/projects/COSMO/logo.jpg"
-                alt="Also displayed at"
-                className="h-10 sm:h-12 md:h-14 w-auto object-contain rounded-md shadow-sm border border-black/10"
+                src="/images/projects/INLAY/cover.png"
+                alt="Inlay Project Cover"
+                className="w-full h-auto block rounded-2xl sm:rounded-3xl"
+                loading="eager"
               />
             </div>
-          </div>
-        </motion.section>
 
-        {/* HERO IMAGE SECTION (Direct full-width cover.png without external frame) */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.7, delay: 0.15, ease: "easeOut" }}
-          className="w-full overflow-hidden rounded-2xl sm:rounded-3xl shadow-md border border-black/5"
-        >
-          <img
-            src="/images/projects/COSMO/cover.png"
-            alt="Cosmo Project Hero Cover"
-            className="w-full h-auto block rounded-2xl sm:rounded-3xl"
-            loading="eager"
-          />
-        </motion.section>
+            {/* Right Column: Title, Subtitle (Mirrors), CTA & Brief */}
+            <div className="flex flex-col gap-6 sm:gap-8 justify-center">
+              
+              {/* Title & Subtitle */}
+              <div className="flex flex-col gap-2">
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-mono font-bold tracking-tight text-stone-950">
+                  Inlay
+                </h1>
+                <span className="text-lg sm:text-xl md:text-2xl font-mono text-stone-700 font-medium tracking-tight">
+                  Mirrors
+                </span>
+              </div>
 
-        {/* BRIEF & BRAINSTORMING SECTION */}
-        <motion.section
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.7, ease: "easeOut" }}
-          className="w-full pt-4 sm:pt-8 md:pt-12"
-        >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
-            {/* Left: Brief Content */}
-            <div className="flex flex-col gap-4 sm:gap-6">
-              <a
-                href="#final-collection"
-                onClick={(e) => {
-                  e.preventDefault();
-                  document.getElementById("final-collection")?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="group inline-flex items-center gap-2.5 self-start px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-gradient-to-r from-[#fcedc7]/90 via-[#f8e0a8]/85 to-[#eed290]/90 hover:from-[#fef1d2] hover:via-[#fae7b9] hover:to-[#f2dca3] text-[#52390f] hover:text-[#382607] border border-[#d4af37]/50 hover:border-[#c59b38]/80 backdrop-blur-md shadow-[0_4px_18px_rgba(197,155,56,0.28)] hover:shadow-[0_6px_24px_rgba(197,155,56,0.42)] text-xs sm:text-sm font-mono font-semibold transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
-              >
-                <span className="tracking-tight">See Final Collection</span>
-                <ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#8f641b] group-hover:text-[#422c07] transition-transform duration-300 group-hover:translate-y-0.5" />
-              </a>
+              {/* See Final Prototypes CTA Button */}
+              <div>
+                <a
+                  href="#final-prototypes"
+                  onClick={(e) => {
+                    e.preventDefault();
+                    document.getElementById("final-prototypes")?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="group inline-flex items-center gap-2.5 self-start px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-gradient-to-r from-[#fcedc7]/90 via-[#f8e0a8]/85 to-[#eed290]/90 hover:from-[#fef1d2] hover:via-[#fae7b9] hover:to-[#f2dca3] text-[#52390f] hover:text-[#382607] border border-[#d4af37]/50 hover:border-[#c59b38]/80 backdrop-blur-md shadow-[0_4px_18px_rgba(197,155,56,0.28)] hover:shadow-[0_6px_24px_rgba(197,155,56,0.42)] text-xs sm:text-sm font-mono font-semibold transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
+                >
+                  <span className="tracking-tight">See Final Prototypes</span>
+                  <ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#8f641b] group-hover:text-[#422c07] transition-transform duration-300 group-hover:translate-y-0.5" />
+                </a>
+              </div>
 
-              <h2 className="text-3xl sm:text-4xl md:text-5xl font-mono font-bold text-stone-950 tracking-tight">
-                Brief
-              </h2>
+              {/* Brief Heading & Content */}
+              <div className="flex flex-col gap-3 sm:gap-4 pt-1">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl font-mono font-bold text-stone-950 tracking-tight">
+                  Brief
+                </h2>
 
-              <p className="text-sm sm:text-base md:text-[17px] text-stone-600 leading-relaxed font-sans font-normal">
-                Develop a distinctive furniture and accessories collection for the <span className="text-stone-950 font-medium">&apos;IHGF Delhi Spring Fair 2025&apos;</span> that explores fresh, forward-thinking directions. Drawing central inspiration from the cosmos, the designs translate celestial textures, forms, and symbolism into an evocative physical language capturing wonder and infinity.
-              </p>
+                <p className="text-sm sm:text-base md:text-[17px] text-stone-600 leading-relaxed font-sans font-normal">
+                  Design a contemporary collection inspired by a traditional Indian metal craft . The collection should merge craft heritage with modern forms, focusing on clean lines, minimalism, and functionality. Create pieces across home d&eacute;cor or table top accessories. The final design must reinterpret traditional techniques in an innovative way that appeals to a modern, design-conscious audience.
+                </p>
+              </div>
+
             </div>
 
-            {/* Right: Brainstorming Image */}
-            <div className="w-full overflow-hidden rounded-2xl sm:rounded-3xl border border-black/8 shadow-md bg-stone-50">
-              <img
-                src="/images/projects/COSMO/brainstorming.jpg"
-                alt="Brainstorming and Ideation Process"
-                className="w-full h-auto object-cover rounded-2xl sm:rounded-3xl"
-                loading="lazy"
-              />
-            </div>
           </div>
         </motion.section>
 
@@ -355,26 +242,26 @@ export default function CosmoProjectPage() {
           transition={{ duration: 0.7, ease: "easeOut" }}
           className="w-full pt-6 sm:pt-10 md:pt-16"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-[70%_1fr] gap-8 md:gap-10 lg:gap-12 items-center">
-            {/* Left: Moodboard Image (70% width on lg) */}
-            <div className="order-2 lg:order-1 w-full overflow-hidden rounded-2xl sm:rounded-3xl border border-black/8 shadow-md bg-stone-50">
-              <img
-                src="/images/projects/COSMO/board.png"
-                alt="Cosmo Concept Moodboard - Sacred Geometry and Cosmic Energy"
-                className="w-full h-auto object-cover rounded-2xl sm:rounded-3xl"
-                loading="lazy"
-              />
-            </div>
-
-            {/* Right: Concept Content */}
-            <div className="order-1 lg:order-2 flex flex-col gap-4 sm:gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+            {/* Concept Content */}
+            <div className="flex flex-col gap-4 sm:gap-6">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-mono font-bold text-stone-950 tracking-tight">
                 Concept Developed
               </h2>
 
               <p className="text-sm sm:text-base md:text-[17px] text-stone-600 leading-relaxed font-sans font-normal">
-                The Cosmo Collection is a crafted range of wall d&eacute;cor accessories inspired by sacred geometry. Grounded in the belief that geometric patterns carry vibrational energy, this collection seamlessly merges aesthetics with mindfulness, creating products that foster balance, healing, and inner harmony.
+                Inlay is a contemporary tabletop accessory collection for an entryway table inspired by the metal inlay technique. The collection merge traditional craft with modern, minimalist forms giving it a unique , modern touch.
               </p>
+            </div>
+
+            {/* Next to it: Brainstorming Image */}
+            <div className="w-full overflow-hidden rounded-2xl sm:rounded-3xl border border-black/8 shadow-md bg-stone-50">
+              <img
+                src="/images/projects/INLAY/brainstorming.jpg"
+                alt="Inlay Concept Development & Brainstorming"
+                className="w-full h-auto object-cover rounded-2xl sm:rounded-3xl"
+                loading="lazy"
+              />
             </div>
           </div>
         </motion.section>
@@ -404,7 +291,7 @@ export default function CosmoProjectPage() {
                   >
                     {isSelected && (
                       <motion.div
-                        layoutId="cosmoActiveTab"
+                        layoutId="inlayActiveTab"
                         className="absolute inset-0 rounded-full bg-gradient-to-r from-[#ecd39b]/70 via-[#fae8be]/85 to-[#dec078]/70 border border-[#c59b38]/45 backdrop-blur-md shadow-[0_2px_14px_rgba(197,155,56,0.22)]"
                         transition={{ type: "spring", stiffness: 420, damping: 32 }}
                       />
@@ -416,7 +303,7 @@ export default function CosmoProjectPage() {
             </div>
           </div>
 
-          {/* Standard Screen-Adapted Frame (fits viewport height, pure white bg for width mismatch) */}
+          {/* Standard Screen-Adapted Frame */}
           <div className="w-full h-[32vh] sm:h-[62vh] md:h-[68vh] lg:h-[74vh] max-h-[760px] min-h-[220px] sm:min-h-[360px] overflow-hidden rounded-2xl sm:rounded-3xl border border-black/8 shadow-md bg-[#ffffff] flex items-center justify-center">
             <AnimatePresence mode="wait">
               <motion.div
@@ -440,29 +327,28 @@ export default function CosmoProjectPage() {
 
       </div>
 
-      {/* FINAL COLLECTION SECTION - Pure Black Background #000000 */}
+      {/* FINAL PROTOTYPES SECTION - Pure Black Background #000000 */}
       <motion.section
-        id="final-collection"
+        id="final-prototypes"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="dark w-full bg-[#000000] text-white pt-10 sm:pt-20 md:pt-24 pb-12 sm:pb-16 md:pb-20 mt-8 sm:mt-16 md:mt-24 px-4 sm:px-8 md:px-12 lg:px-[100px] scroll-mt-20 flex flex-col gap-8 sm:gap-12"
+        className="dark w-full bg-[#000000] text-white pt-10 sm:pt-20 md:pt-24 pb-20 sm:pb-28 md:pb-32 mt-8 sm:mt-16 md:mt-24 px-4 sm:px-8 md:px-12 lg:px-[100px] scroll-mt-20 flex flex-col gap-8 sm:gap-12"
       >
         {/* Section Divider & Header */}
         <div className="border-b border-white/20 pb-4 sm:pb-6">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-mono font-bold text-white tracking-tight">
-            Final Collection
+            Final Prototypes
           </h2>
         </div>
 
-        {/* Products in Final Collection */}
+        {/* Products in Final Prototypes */}
         <div className="flex flex-col">
           {finalCollectionProducts.map((product, index) => {
             // Alternating layout:
             // 1st product (index 0): Image on Left, Text on Right
             // 2nd product (index 1): Text on Left, Image on Right (vice versa)
-            // 3rd product (index 2): Image on Left, Text on Right, etc.
             const isImageLeft = index % 2 === 0;
 
             return (
@@ -486,20 +372,20 @@ export default function CosmoProjectPage() {
                     </p>
                   </div>
 
-                  {/* Collage Column: Dynamic Collage Layout */}
+                  {/* Dynamic Collage Layout */}
                   <div
                     className={`lg:col-span-7 w-full ${
                       isImageLeft ? "order-2 lg:order-1" : "order-2 lg:order-2"
                     }`}
                   >
                   {product.images.length === 2 ? (
-                    /* 2-Image Diptych Collage (s1 & s3) - Native 2:3 aspect ratio, complete silhouette & warm glow without cutoff */
+                    /* 2-Image Diptych Collage */
                     <div className="w-full grid grid-cols-2 gap-3 sm:gap-4 md:gap-5">
                       {product.images.map((img, imgIdx) => (
                         <div
                           key={img.id}
                           onClick={() => setActiveGallery({ images: product.images, index: imgIdx })}
-                          className="group relative aspect-[2/3] w-full rounded-[8px] border border-white/10 overflow-hidden cursor-pointer bg-neutral-950/60 shadow-lg transition-all duration-300 hover:border-white/35 hover:shadow-[0_8px_30px_rgba(255,255,255,0.08)]"
+                          className="group relative aspect-[3/4] w-full rounded-[8px] border border-white/10 overflow-hidden cursor-pointer bg-neutral-950/60 shadow-lg transition-all duration-300 hover:border-white/35 hover:shadow-[0_8px_30px_rgba(255,255,255,0.08)]"
                           title="Click to open full preview"
                         >
                           <img
@@ -517,7 +403,7 @@ export default function CosmoProjectPage() {
                       ))}
                     </div>
                   ) : (
-                    /* 4-Image Collage (Cosmic Mirror) */
+                    /* 4-Image Collage */
                     <div className="w-full grid grid-cols-12 gap-3 sm:gap-4 h-[380px] sm:h-[440px] md:h-[480px] lg:h-[500px]">
                       {/* Image 1: Main Full-Height Silhouette (Col span 5) */}
                       <div
@@ -561,7 +447,7 @@ export default function CosmoProjectPage() {
 
                         {/* Bottom Row: Detail Images 3 & 4 side-by-side */}
                         <div className="grid grid-cols-2 gap-3 sm:gap-4 h-full min-h-0">
-                          {/* Image 3: Upper Crescent Detail */}
+                          {/* Image 3: Detail View */}
                           <div
                             onClick={() => setActiveGallery({ images: product.images, index: 2 })}
                             className="relative h-full min-h-0 rounded-[8px] border border-white/10 overflow-hidden cursor-pointer group p-0 transition-all duration-300 hover:border-white/30 hover:shadow-[0_8px_30px_rgba(255,255,255,0.07)]"
@@ -580,7 +466,7 @@ export default function CosmoProjectPage() {
                             </div>
                           </div>
 
-                          {/* Image 4: Waist Joint Detail */}
+                          {/* Image 4: Joint Detail */}
                           <div
                             onClick={() => setActiveGallery({ images: product.images, index: 3 })}
                             className="relative h-full min-h-0 rounded-[8px] border border-white/10 overflow-hidden cursor-pointer group p-0 transition-all duration-300 hover:border-white/30 hover:shadow-[0_8px_30px_rgba(255,255,255,0.07)]"
@@ -605,54 +491,23 @@ export default function CosmoProjectPage() {
                 </div>
 
               </div>
+
+              {/* Under Mirror 2: Full Width Process Image */}
+              {product.id === "mirror-2" && (
+                <div className="w-full mt-16 sm:mt-20 md:mt-24 lg:mt-28">
+                  <div className="w-full rounded-xl sm:rounded-2xl border border-white/10 overflow-hidden bg-neutral-950/60 shadow-lg">
+                    <img
+                      src="/images/projects/INLAY/process.png"
+                      alt="Mirror Making & Prototyping Process"
+                      className="w-full h-auto object-cover select-none block"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              )}
             </React.Fragment>
           );
         })}
-        </div>
-      </motion.section>
-
-      {/* IHGF DISPLAY SECTION - Pure Black Background #000000 */}
-      <motion.section
-        id="ihgf-display"
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-60px" }}
-        transition={{ duration: 0.7, ease: "easeOut" }}
-        className="dark w-full bg-[#000000] text-white pt-4 sm:pt-6 md:pt-8 pb-20 sm:pb-28 px-4 sm:px-8 md:px-12 lg:px-[100px] scroll-mt-20 flex flex-col gap-8 sm:gap-12"
-      >
-        {/* Section Divider & Header */}
-        <div className="border-b border-white/20 pb-4 sm:pb-6 flex flex-col sm:flex-row sm:items-baseline justify-between gap-2">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-mono font-bold text-white tracking-tight">
-            IHGF Display
-          </h2>
-          <span className="text-xs sm:text-sm md:text-base font-mono text-stone-400">
-            Delhi Spring Fair 2025
-          </span>
-        </div>
-
-        {/* 2-Image Grid for IHGF Exhibition Displays */}
-        <div className="w-full grid grid-cols-2 gap-3 sm:gap-6 md:gap-8">
-          {ihgfDisplayImages.map((img, imgIdx) => (
-            <div
-              key={img.id}
-              onClick={() => setActiveGallery({ images: ihgfDisplayImages, index: imgIdx })}
-              className="group relative aspect-[3/4] w-full rounded-[8px] border border-white/10 overflow-hidden cursor-pointer bg-neutral-950/60 shadow-lg transition-all duration-300 hover:border-white/35 hover:shadow-[0_8px_30px_rgba(255,255,255,0.08)]"
-              title="Click to open full preview"
-            >
-              <img
-                src={img.src}
-                alt={img.alt}
-                className="w-full h-full object-cover object-center select-none transition-transform duration-300 group-hover:scale-[1.03]"
-                loading="lazy"
-              />
-              {/* Corner Maximize Icon on Hover (minimalist, no text label) */}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-200 flex items-end justify-end p-2 pointer-events-none">
-                <span className="p-1 rounded-[4px] bg-black/70 text-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-sm shadow-md">
-                  <Maximize2 className="w-3.5 h-3.5" />
-                </span>
-              </div>
-            </div>
-          ))}
         </div>
 
         {/* Bottom Navigation: Back to Work Button */}
@@ -674,7 +529,7 @@ export default function CosmoProjectPage() {
         </div>
       </motion.section>
 
-      {/* Full Preview Lightbox Modal - Clean minimalist view: only arrows, cross button, and image */}
+      {/* Full Preview Lightbox Modal */}
       <AnimatePresence>
         {activeGallery !== null && (
           <motion.div
@@ -695,16 +550,18 @@ export default function CosmoProjectPage() {
             </button>
 
             {/* Back / Prev Button */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                prevPreviewImage();
-              }}
-              className="absolute left-3 sm:left-6 md:left-8 top-1/2 -translate-y-1/2 z-50 p-2.5 sm:p-3.5 rounded-full bg-black/70 hover:bg-black/90 text-white border border-white/20 backdrop-blur-md transition-all duration-200 hover:scale-110 cursor-pointer shadow-2xl"
-              aria-label="Previous image"
-            >
-              <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
-            </button>
+            {activeGallery.images.length > 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  prevPreviewImage();
+                }}
+                className="absolute left-3 sm:left-6 md:left-8 top-1/2 -translate-y-1/2 z-50 p-2.5 sm:p-3.5 rounded-full bg-black/70 hover:bg-black/90 text-white border border-white/20 backdrop-blur-md transition-all duration-200 hover:scale-110 cursor-pointer shadow-2xl"
+                aria-label="Previous image"
+              >
+                <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+              </button>
+            )}
 
             {/* Central Main Image */}
             <div
@@ -730,20 +587,21 @@ export default function CosmoProjectPage() {
             </div>
 
             {/* Next Button */}
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                nextPreviewImage();
-              }}
-              className="absolute right-3 sm:right-6 md:right-8 top-1/2 -translate-y-1/2 z-50 p-2.5 sm:p-3.5 rounded-full bg-black/70 hover:bg-black/90 text-white border border-white/20 backdrop-blur-md transition-all duration-200 hover:scale-110 cursor-pointer shadow-2xl"
-              aria-label="Next image"
-            >
-              <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
-            </button>
+            {activeGallery.images.length > 1 && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  nextPreviewImage();
+                }}
+                className="absolute right-3 sm:right-6 md:right-8 top-1/2 -translate-y-1/2 z-50 p-2.5 sm:p-3.5 rounded-full bg-black/70 hover:bg-black/90 text-white border border-white/20 backdrop-blur-md transition-all duration-200 hover:scale-110 cursor-pointer shadow-2xl"
+                aria-label="Next image"
+              >
+                <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+              </button>
+            )}
           </motion.div>
         )}
       </AnimatePresence>
     </main>
   );
 }
-

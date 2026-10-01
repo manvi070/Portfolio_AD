@@ -8,6 +8,7 @@ export interface ProjectItem {
   bgGradient: string;
   image: string;
   link?: string;
+  hidden?: boolean;
 }
 
 export const projectsData: ProjectItem[] = [
@@ -29,17 +30,17 @@ export const projectsData: ProjectItem[] = [
     title: "Inlay",
     bgGradient: "bg-gradient-to-b from-[#FAF8F5] via-[#E4DDD4] to-[#B8A898] dark:from-[#262320] dark:via-[#1D1A17] dark:to-[#12100E]",
     image: "/images/projects/INLAY/M1.png",
-    link: "#",
+    link: "/projects/inlay",
   },
   {
     id: "lamp",
     number: "03.",
     numberColor: "text-[#D45828] dark:text-[#F68A5E]",
     category: "Home Decor",
-    title: "Lamp",
+    title: "Tangled",
     bgGradient: "bg-gradient-to-b from-[#FDF5ED] via-[#F4B982] to-[#C8481E] dark:from-[#33180E] dark:via-[#261008] dark:to-[#170804]",
     image: "/images/projects/Lamp/2.png",
-    link: "#",
+    link: "https://www.behance.net/gallery/192140737/TANGLED",
   },
   {
     id: "bloom",
@@ -49,7 +50,7 @@ export const projectsData: ProjectItem[] = [
     title: "Bloom",
     bgGradient: "bg-gradient-to-b from-[#FDF0F4] via-[#F4A8C4] to-[#B82356] dark:from-[#30101C] dark:via-[#220B13] dark:to-[#14060B]",
     image: "/images/projects/Bloom/1.png",
-    link: "#",
+    link: "https://www.behance.net/gallery/192689793/BLOOM",
   },
   {
     id: "internship-works",
@@ -59,7 +60,7 @@ export const projectsData: ProjectItem[] = [
     title: "Internship Works",
     bgGradient: "bg-gradient-to-b from-[#F8F7F4] via-[#D5CBB9] to-[#2B2925] dark:from-[#24221E] dark:via-[#1A1815] dark:to-[#0D0C0A]",
     image: "/images/projects/Internship projects/cover.png",
-    link: "#",
+    link: "/projects/internship-works",
   },
   {
     id: "college-projects",
@@ -70,5 +71,6 @@ export const projectsData: ProjectItem[] = [
     bgGradient: "bg-gradient-to-b from-[#F0F4F8] via-[#B8CADC] to-[#2C3E50] dark:from-[#16212B] dark:via-[#101922] dark:to-[#0A1016]",
     image: "/images/projects/clg projects/cover.png",
     link: "#",
+    hidden: true,
   },
 ];

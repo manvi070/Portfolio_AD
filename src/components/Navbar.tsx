@@ -106,7 +106,7 @@ export default function Navbar() {
           {/* Mobile Right: Resume Button */}
           <div className="flex md:hidden items-center shrink-0">
             <Link
-              href="https://cdn.jsdelivr.net/gh/manvi070/cdn@859957177817f6c725f99b4bbb6692641a13f356/ManviGupta__UI_UXDesign_Resume.pdf"
+              href="https://drive.google.com/file/d/131em8AZVZeX5ryOlcu1SiolzIdXGC7-Y/view?usp=drive_link"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Resume"
@@ -123,7 +123,7 @@ export default function Navbar() {
 
         {/* Desktop Resume Button (Only visible on web) */}
         <Link
-          href="https://cdn.jsdelivr.net/gh/manvi070/cdn@859957177817f6c725f99b4bbb6692641a13f356/ManviGupta__UI_UXDesign_Resume.pdf"
+          href="https://drive.google.com/file/d/131em8AZVZeX5ryOlcu1SiolzIdXGC7-Y/view?usp=drive_link"
           target="_blank"
           rel="noopener noreferrer"
           className={`hidden md:flex group h-[54px] sm:h-[58px] items-center rounded-full border border-white/50 dark:border-white/30 px-6 text-sm font-bold text-slate-800 dark:text-white hover:bg-white/60 dark:hover:bg-slate-800/90 hover:text-black dark:hover:text-white transition-all duration-300 gap-2 shrink-0 ${

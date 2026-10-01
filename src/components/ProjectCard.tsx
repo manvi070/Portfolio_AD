@@ -55,8 +55,13 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   );
 
   if (hasLink && project.link) {
+    const isExternal = project.link.startsWith("http://") || project.link.startsWith("https://");
     return (
-      <Link href={project.link} className="block w-full focus:outline-none">
+      <Link
+        href={project.link}
+        className="block w-full focus:outline-none"
+        {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+      >
         {cardInner}
       </Link>
     );
