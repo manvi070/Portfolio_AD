@@ -50,7 +50,7 @@ export const projectsData: ProjectItem[] = [
     title: "Bloom",
     bgGradient: "bg-gradient-to-b from-[#FDF0F4] via-[#F4A8C4] to-[#B82356] dark:from-[#30101C] dark:via-[#220B13] dark:to-[#14060B]",
     image: "/images/projects/Bloom/1.png",
-    link: "https://www.behance.net/gallery/192689793/BLOOM",
+    link: "/projects/bloom",
   },
   {
     id: "internship-works",

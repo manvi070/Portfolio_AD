@@ -46,7 +46,7 @@ export interface ProductItem {
   }[];
 }
 
-// 2. Final Prototypes products data (2 mirrors)
+// 2. Final Product data (2 mirrors)
 const finalCollectionProducts: ProductItem[] = [
   {
     id: "mirror-1",
@@ -203,17 +203,17 @@ export default function InlayProjectPage() {
                 </span>
               </div>
 
-              {/* See Final Prototypes CTA Button */}
+              {/* See Final Product CTA Button */}
               <div>
                 <a
-                  href="#final-prototypes"
+                  href="#final-product"
                   onClick={(e) => {
                     e.preventDefault();
-                    document.getElementById("final-prototypes")?.scrollIntoView({ behavior: "smooth" });
+                    document.getElementById("final-product")?.scrollIntoView({ behavior: "smooth" });
                   }}
                   className="group inline-flex items-center gap-2.5 self-start px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-gradient-to-r from-[#fcedc7]/90 via-[#f8e0a8]/85 to-[#eed290]/90 hover:from-[#fef1d2] hover:via-[#fae7b9] hover:to-[#f2dca3] text-[#52390f] hover:text-[#382607] border border-[#d4af37]/50 hover:border-[#c59b38]/80 backdrop-blur-md shadow-[0_4px_18px_rgba(197,155,56,0.28)] hover:shadow-[0_6px_24px_rgba(197,155,56,0.42)] text-xs sm:text-sm font-mono font-semibold transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
                 >
-                  <span className="tracking-tight">See Final Prototypes</span>
+                  <span className="tracking-tight">See Final Product</span>
                   <ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#8f641b] group-hover:text-[#422c07] transition-transform duration-300 group-hover:translate-y-0.5" />
                 </a>
               </div>
@@ -327,23 +327,23 @@ export default function InlayProjectPage() {
 
       </div>
 
-      {/* FINAL PROTOTYPES SECTION - Pure Black Background #000000 */}
+      {/* FINAL PRODUCT SECTION - Clean White Background */}
       <motion.section
-        id="final-prototypes"
+        id="final-product"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="dark w-full bg-[#000000] text-white pt-10 sm:pt-20 md:pt-24 pb-20 sm:pb-28 md:pb-32 mt-8 sm:mt-16 md:mt-24 px-4 sm:px-8 md:px-12 lg:px-[100px] scroll-mt-20 flex flex-col gap-8 sm:gap-12"
+        className="w-full bg-[#ffffff] text-[#1a1a1a] pt-10 sm:pt-20 md:pt-24 pb-20 sm:pb-28 md:pb-32 mt-8 sm:mt-16 md:mt-24 px-4 sm:px-8 md:px-12 lg:px-[100px] scroll-mt-20 flex flex-col gap-8 sm:gap-12"
       >
         {/* Section Divider & Header */}
-        <div className="border-b border-white/20 pb-4 sm:pb-6">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-mono font-bold text-white tracking-tight">
-            Final Prototypes
+        <div className="border-b border-black/10 pb-4 sm:pb-6">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-mono font-bold text-stone-950 tracking-tight">
+            Final Product
           </h2>
         </div>
 
-        {/* Products in Final Prototypes */}
+        {/* Products in Final Product */}
         <div className="flex flex-col">
           {finalCollectionProducts.map((product, index) => {
             // Alternating layout:
@@ -354,7 +354,7 @@ export default function InlayProjectPage() {
             return (
               <React.Fragment key={product.id}>
                 {index > 0 && (
-                  <div className="w-full border-t border-white/15 my-12 sm:my-16 md:my-20" />
+                  <div className="w-full border-t border-black/10 my-12 sm:my-16 md:my-20" />
                 )}
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12 lg:gap-16 items-start">
                   {/* Product Info & Description */}
@@ -363,11 +363,12 @@ export default function InlayProjectPage() {
                       isImageLeft ? "order-1 lg:order-2" : "order-1 lg:order-1"
                     }`}
                   >
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-mono font-semibold text-[#E0B88A] tracking-tight">
-                      {product.number} {product.name}
+                    <h3 className="text-xl sm:text-2xl md:text-3xl font-mono font-semibold text-stone-950 tracking-tight">
+                      <span className="text-[#a07428] mr-2">{product.number}</span>
+                      {product.name}
                     </h3>
 
-                    <p className="text-sm sm:text-base md:text-[17px] text-stone-300 leading-relaxed font-sans font-normal">
+                    <p className="text-sm sm:text-base md:text-[17px] text-stone-600 leading-relaxed font-sans font-normal">
                       {product.description}
                     </p>
                   </div>
@@ -385,7 +386,7 @@ export default function InlayProjectPage() {
                         <div
                           key={img.id}
                           onClick={() => setActiveGallery({ images: product.images, index: imgIdx })}
-                          className="group relative aspect-[3/4] w-full rounded-[8px] border border-white/10 overflow-hidden cursor-pointer bg-neutral-950/60 shadow-lg transition-all duration-300 hover:border-white/35 hover:shadow-[0_8px_30px_rgba(255,255,255,0.08)]"
+                          className="group relative aspect-[3/4] w-full rounded-[8px] border border-black/10 overflow-hidden cursor-pointer bg-stone-50 shadow-sm transition-all duration-300 hover:border-black/30 hover:shadow-md"
                           title="Click to open full preview"
                         >
                           <img
@@ -394,8 +395,8 @@ export default function InlayProjectPage() {
                             className="w-full h-full object-cover object-center select-none transition-transform duration-500 group-hover:scale-[1.03]"
                             loading="lazy"
                           />
-                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-200 flex items-end justify-end p-2.5 sm:p-3 pointer-events-none">
-                            <span className="p-1.5 rounded-[4px] bg-black/70 text-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-sm shadow-md">
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-200 flex items-end justify-end p-2.5 sm:p-3 pointer-events-none">
+                            <span className="p-1.5 rounded-[4px] bg-black/75 text-white/95 opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-sm shadow-md">
                               <Maximize2 className="w-3.5 h-3.5" />
                             </span>
                           </div>
@@ -408,7 +409,7 @@ export default function InlayProjectPage() {
                       {/* Image 1: Main Full-Height Silhouette (Col span 5) */}
                       <div
                         onClick={() => setActiveGallery({ images: product.images, index: 0 })}
-                        className="col-span-5 relative h-full min-h-0 rounded-[8px] border border-white/10 overflow-hidden cursor-pointer group p-0 transition-all duration-300 hover:border-white/30 hover:shadow-[0_8px_30px_rgba(255,255,255,0.07)]"
+                        className="col-span-5 relative h-full min-h-0 rounded-[8px] border border-black/10 overflow-hidden cursor-pointer group p-0 transition-all duration-300 hover:border-black/30 hover:shadow-md bg-stone-50 shadow-sm"
                         title="Click to open full preview"
                       >
                         <img
@@ -418,7 +419,7 @@ export default function InlayProjectPage() {
                           loading="lazy"
                         />
                         <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-200 flex items-end justify-end p-2 pointer-events-none">
-                          <span className="p-1.5 rounded-[6px] bg-black/70 text-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-sm shadow-md">
+                          <span className="p-1.5 rounded-[6px] bg-black/75 text-white/95 opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-sm shadow-md">
                             <Maximize2 className="w-3.5 h-3.5" />
                           </span>
                         </div>
@@ -429,7 +430,7 @@ export default function InlayProjectPage() {
                         {/* Image 2: Perspective View (Landscape) */}
                         <div
                           onClick={() => setActiveGallery({ images: product.images, index: 1 })}
-                          className="relative h-full min-h-0 rounded-[8px] border border-white/10 overflow-hidden cursor-pointer group p-0 transition-all duration-300 hover:border-white/30 hover:shadow-[0_8px_30px_rgba(255,255,255,0.07)]"
+                          className="relative h-full min-h-0 rounded-[8px] border border-black/10 overflow-hidden cursor-pointer group p-0 transition-all duration-300 hover:border-black/30 hover:shadow-md bg-stone-50 shadow-sm"
                           title="Click to open full preview"
                         >
                           <img
@@ -439,7 +440,7 @@ export default function InlayProjectPage() {
                             loading="lazy"
                           />
                           <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-200 flex items-end justify-end p-2 pointer-events-none">
-                            <span className="p-1.5 rounded-[6px] bg-black/70 text-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-sm shadow-md">
+                            <span className="p-1.5 rounded-[6px] bg-black/75 text-white/95 opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-sm shadow-md">
                               <Maximize2 className="w-3.5 h-3.5" />
                             </span>
                           </div>
@@ -450,7 +451,7 @@ export default function InlayProjectPage() {
                           {/* Image 3: Detail View */}
                           <div
                             onClick={() => setActiveGallery({ images: product.images, index: 2 })}
-                            className="relative h-full min-h-0 rounded-[8px] border border-white/10 overflow-hidden cursor-pointer group p-0 transition-all duration-300 hover:border-white/30 hover:shadow-[0_8px_30px_rgba(255,255,255,0.07)]"
+                            className="relative h-full min-h-0 rounded-[8px] border border-black/10 overflow-hidden cursor-pointer group p-0 transition-all duration-300 hover:border-black/30 hover:shadow-md bg-stone-50 shadow-sm"
                             title="Click to open full preview"
                           >
                             <img
@@ -460,7 +461,7 @@ export default function InlayProjectPage() {
                               loading="lazy"
                             />
                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-200 flex items-end justify-end p-1.5 pointer-events-none">
-                              <span className="p-1 rounded-[4px] bg-black/70 text-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-sm shadow-md">
+                              <span className="p-1 rounded-[4px] bg-black/75 text-white/95 opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-sm shadow-md">
                                 <Maximize2 className="w-3 h-3" />
                               </span>
                             </div>
@@ -469,7 +470,7 @@ export default function InlayProjectPage() {
                           {/* Image 4: Joint Detail */}
                           <div
                             onClick={() => setActiveGallery({ images: product.images, index: 3 })}
-                            className="relative h-full min-h-0 rounded-[8px] border border-white/10 overflow-hidden cursor-pointer group p-0 transition-all duration-300 hover:border-white/30 hover:shadow-[0_8px_30px_rgba(255,255,255,0.07)]"
+                            className="relative h-full min-h-0 rounded-[8px] border border-black/10 overflow-hidden cursor-pointer group p-0 transition-all duration-300 hover:border-black/30 hover:shadow-md bg-stone-50 shadow-sm"
                             title="Click to open full preview"
                           >
                             <img
@@ -479,7 +480,7 @@ export default function InlayProjectPage() {
                               loading="lazy"
                             />
                             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-200 flex items-end justify-end p-1.5 pointer-events-none">
-                              <span className="p-1 rounded-[4px] bg-black/70 text-white/90 opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-sm shadow-md">
+                              <span className="p-1 rounded-[4px] bg-black/75 text-white/95 opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-sm shadow-md">
                                 <Maximize2 className="w-3 h-3" />
                               </span>
                             </div>
@@ -495,7 +496,7 @@ export default function InlayProjectPage() {
               {/* Under Mirror 2: Full Width Process Image */}
               {product.id === "mirror-2" && (
                 <div className="w-full mt-16 sm:mt-20 md:mt-24 lg:mt-28">
-                  <div className="w-full rounded-xl sm:rounded-2xl border border-white/10 overflow-hidden bg-neutral-950/60 shadow-lg">
+                  <div className="w-full rounded-xl sm:rounded-2xl border border-black/10 overflow-hidden bg-stone-50 shadow-md">
                     <img
                       src="/images/projects/INLAY/process.png"
                       alt="Mirror Making & Prototyping Process"
@@ -514,17 +515,17 @@ export default function InlayProjectPage() {
         <div className="flex items-center justify-start w-full pt-6 sm:pt-10">
           <Link
             href="/#work"
-            className="group inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-white/10 hover:bg-white/20 text-white border border-white/20 backdrop-blur-md shadow-md text-xs sm:text-sm font-mono font-medium transition-all duration-300 hover:-translate-x-1 cursor-pointer"
+            className="group inline-flex items-center gap-2 px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-stone-100 hover:bg-stone-200 text-stone-800 border border-stone-200/80 backdrop-blur-md shadow-sm text-xs sm:text-sm font-mono font-medium transition-all duration-300 hover:-translate-x-1 cursor-pointer"
           >
-            <ArrowLeft className="w-4 h-4 text-stone-300 group-hover:text-white transition-transform group-hover:-translate-x-1" />
+            <ArrowLeft className="w-4 h-4 text-stone-600 group-hover:text-stone-900 transition-transform group-hover:-translate-x-1" />
             <span>Back to Work</span>
           </Link>
         </div>
 
         {/* Default Footer / Contact Section Frame */}
         <div className="w-full pt-6 sm:pt-10">
-          <div className="rounded-[32px] sm:rounded-[44px] bg-neutral-900/60 backdrop-blur-3xl border border-white/15 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.6),inset_0_1px_2px_rgba(255,255,255,0.08)] transition-all duration-500">
-            <Contact darkBg={true} />
+          <div className="rounded-[32px] sm:rounded-[44px] bg-stone-100/80 backdrop-blur-2xl border border-stone-200/80 shadow-[0_20px_50px_-15px_rgba(0,0,0,0.06)] transition-all duration-500">
+            <Contact darkBg={false} />
           </div>
         </div>
       </motion.section>
