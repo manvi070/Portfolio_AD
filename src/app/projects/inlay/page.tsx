@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowLeft, ArrowDown, ChevronLeft, ChevronRight, X, Maximize2 } from "lucide-react";
@@ -93,7 +93,7 @@ const finalCollectionProducts: ProductItem[] = [
 ];
 
 export default function InlayProjectPage() {
-  const [activeTab, setActiveTab] = useState<TabId>("explorations");
+  const [activeTab, setActiveTab] = useState<TabId>("renders");
   const currentTab = explorationTabs.find((tab) => tab.id === activeTab) || explorationTabs[0];
 
   const [activeGallery, setActiveGallery] = useState<{
@@ -124,6 +124,110 @@ export default function InlayProjectPage() {
   const closePreview = useCallback(() => {
     setActiveGallery(null);
   }, []);
+
+  const pointerStartRef = useRef<{ x: number; y: number; time: number } | null>(null);
+  const swipedRef = useRef(false);
+  const lastSwipeTimeRef = useRef(0);
+
+  const triggerSwipe = useCallback((direction: "next" | "prev") => {
+    const now = Date.now();
+    if (now - lastSwipeTimeRef.current < 300) return;
+    lastSwipeTimeRef.current = now;
+    if (direction === "next") {
+      nextPreviewImage();
+    } else {
+      prevPreviewImage();
+    }
+  }, [nextPreviewImage, prevPreviewImage]);
+
+  const handlePointerDown = (e: React.PointerEvent) => {
+    if (!e.isPrimary) return;
+    pointerStartRef.current = {
+      x: e.clientX,
+      y: e.clientY,
+      time: Date.now(),
+    };
+    swipedRef.current = false;
+  };
+
+  const handlePointerMove = (e: React.PointerEvent) => {
+    if (!pointerStartRef.current || !e.isPrimary) return;
+    const deltaX = e.clientX - pointerStartRef.current.x;
+    const deltaY = e.clientY - pointerStartRef.current.y;
+    if (Math.abs(deltaX) > 10 || Math.abs(deltaY) > 10) {
+      swipedRef.current = true;
+    }
+  };
+
+  const handlePointerUp = (e: React.PointerEvent) => {
+    if (!pointerStartRef.current || !e.isPrimary) return;
+    const deltaX = e.clientX - pointerStartRef.current.x;
+    const deltaY = e.clientY - pointerStartRef.current.y;
+    const deltaTime = Date.now() - pointerStartRef.current.time;
+    pointerStartRef.current = null;
+
+    if (activeGallery && activeGallery.images.length > 1) {
+      const isHorizontal = Math.abs(deltaX) > Math.abs(deltaY);
+      const isSwipeDistance = Math.abs(deltaX) > 40 || (Math.abs(deltaX) > 25 && deltaTime < 300);
+      if (isHorizontal && isSwipeDistance) {
+        swipedRef.current = true;
+        triggerSwipe(deltaX < 0 ? "next" : "prev");
+        setTimeout(() => {
+          swipedRef.current = false;
+        }, 150);
+        return;
+      }
+    }
+
+    setTimeout(() => {
+      swipedRef.current = false;
+    }, 150);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length !== 1) return;
+    pointerStartRef.current = {
+      x: e.touches[0].clientX,
+      y: e.touches[0].clientY,
+      time: Date.now(),
+    };
+    swipedRef.current = false;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!pointerStartRef.current || e.touches.length !== 1) return;
+    const deltaX = e.touches[0].clientX - pointerStartRef.current.x;
+    const deltaY = e.touches[0].clientY - pointerStartRef.current.y;
+    if (Math.abs(deltaX) > 10 || Math.abs(deltaY) > 10) {
+      swipedRef.current = true;
+    }
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (!pointerStartRef.current) return;
+    const touch = e.changedTouches[0];
+    const deltaX = touch.clientX - pointerStartRef.current.x;
+    const deltaY = touch.clientY - pointerStartRef.current.y;
+    const deltaTime = Date.now() - pointerStartRef.current.time;
+    pointerStartRef.current = null;
+
+    if (activeGallery && activeGallery.images.length > 1) {
+      const isHorizontal = Math.abs(deltaX) > Math.abs(deltaY);
+      const isSwipeDistance = Math.abs(deltaX) > 40 || (Math.abs(deltaX) > 25 && deltaTime < 300);
+      if (isHorizontal && isSwipeDistance) {
+        swipedRef.current = true;
+        triggerSwipe(deltaX < 0 ? "next" : "prev");
+        setTimeout(() => {
+          swipedRef.current = false;
+        }, 150);
+        return;
+      }
+    }
+
+    setTimeout(() => {
+      swipedRef.current = false;
+    }, 150);
+  };
 
   useEffect(() => {
     if (activeGallery === null) return;
@@ -392,10 +496,10 @@ export default function InlayProjectPage() {
                           <img
                             src={img.src}
                             alt={img.alt}
-                            className="w-full h-full object-cover object-center select-none transition-transform duration-500 group-hover:scale-[1.03]"
+                            className="w-full h-full object-cover object-center select-none"
                             loading="lazy"
                           />
-                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-200 flex items-end justify-end p-2.5 sm:p-3 pointer-events-none">
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-200 flex items-end justify-end p-2.5 sm:p-3 pointer-events-none">
                             <span className="p-1.5 rounded-[4px] bg-black/75 text-white/95 opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-sm shadow-md">
                               <Maximize2 className="w-3.5 h-3.5" />
                             </span>
@@ -415,10 +519,10 @@ export default function InlayProjectPage() {
                         <img
                           src={product.images[0].src}
                           alt={product.images[0].alt}
-                          className="w-full h-full object-cover object-center select-none transition-transform duration-300 group-hover:scale-[1.03]"
+                          className="w-full h-full object-cover object-center select-none"
                           loading="lazy"
                         />
-                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-200 flex items-end justify-end p-2 pointer-events-none">
+                        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-200 flex items-end justify-end p-2 pointer-events-none">
                           <span className="p-1.5 rounded-[6px] bg-black/75 text-white/95 opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-sm shadow-md">
                             <Maximize2 className="w-3.5 h-3.5" />
                           </span>
@@ -436,10 +540,10 @@ export default function InlayProjectPage() {
                           <img
                             src={product.images[1].src}
                             alt={product.images[1].alt}
-                            className="w-full h-full object-cover object-center select-none transition-transform duration-300 group-hover:scale-[1.03]"
+                            className="w-full h-full object-cover object-center select-none"
                             loading="lazy"
                           />
-                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-200 flex items-end justify-end p-2 pointer-events-none">
+                          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-200 flex items-end justify-end p-2 pointer-events-none">
                             <span className="p-1.5 rounded-[6px] bg-black/75 text-white/95 opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-sm shadow-md">
                               <Maximize2 className="w-3.5 h-3.5" />
                             </span>
@@ -457,10 +561,10 @@ export default function InlayProjectPage() {
                             <img
                               src={product.images[2].src}
                               alt={product.images[2].alt}
-                              className="w-full h-full object-cover object-center select-none transition-transform duration-300 group-hover:scale-[1.03]"
+                              className="w-full h-full object-cover object-center select-none"
                               loading="lazy"
                             />
-                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-200 flex items-end justify-end p-1.5 pointer-events-none">
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-200 flex items-end justify-end p-1.5 pointer-events-none">
                               <span className="p-1 rounded-[4px] bg-black/75 text-white/95 opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-sm shadow-md">
                                 <Maximize2 className="w-3 h-3" />
                               </span>
@@ -476,10 +580,10 @@ export default function InlayProjectPage() {
                             <img
                               src={product.images[3].src}
                               alt={product.images[3].alt}
-                              className="w-full h-full object-cover object-center select-none transition-transform duration-300 group-hover:scale-[1.03]"
+                              className="w-full h-full object-cover object-center select-none"
                               loading="lazy"
                             />
-                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/15 transition-colors duration-200 flex items-end justify-end p-1.5 pointer-events-none">
+                            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-200 flex items-end justify-end p-1.5 pointer-events-none">
                               <span className="p-1 rounded-[4px] bg-black/75 text-white/95 opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-sm shadow-md">
                                 <Maximize2 className="w-3 h-3" />
                               </span>
@@ -538,12 +642,28 @@ export default function InlayProjectPage() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            onClick={closePreview}
-            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 select-none"
+            onClick={() => {
+              if (swipedRef.current) return;
+              closePreview();
+            }}
+            onPointerDown={handlePointerDown}
+            onPointerMove={handlePointerMove}
+            onPointerUp={handlePointerUp}
+            onPointerCancel={() => {
+              pointerStartRef.current = null;
+              setTimeout(() => { swipedRef.current = false; }, 150);
+            }}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 sm:p-8 select-none touch-none"
           >
             {/* Close / Cross Button */}
             <button
-              onClick={closePreview}
+              onClick={(e) => {
+                e.stopPropagation();
+                closePreview();
+              }}
               className="absolute top-4 sm:top-6 right-4 sm:right-6 z-50 p-2 sm:p-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white transition-colors cursor-pointer border border-white/15 shadow-lg"
               aria-label="Close preview"
             >
@@ -573,15 +693,27 @@ export default function InlayProjectPage() {
                 <motion.div
                   key={activeGallery.index}
                   initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
                   exit={{ opacity: 0, scale: 0.96 }}
                   transition={{ duration: 0.25, ease: "easeOut" }}
-                  className="relative max-h-[85vh] sm:max-h-[88vh] max-w-[85vw] sm:max-w-[88vw] flex items-center justify-center pointer-events-auto"
+                  drag={activeGallery.images.length > 1 ? "x" : false}
+                  dragConstraints={{ left: 0, right: 0 }}
+                  dragElastic={0.35}
+                  onDragEnd={(_, info) => {
+                    const swipeThreshold = 40;
+                    if (info.offset.x < -swipeThreshold || info.velocity.x < -300) {
+                      triggerSwipe("next");
+                    } else if (info.offset.x > swipeThreshold || info.velocity.x > 300) {
+                      triggerSwipe("prev");
+                    }
+                  }}
+                  className="relative max-h-[85vh] sm:max-h-[88vh] max-w-[85vw] sm:max-w-[88vw] flex items-center justify-center pointer-events-auto cursor-grab active:cursor-grabbing touch-none select-none"
                 >
                   <img
                     src={activeGallery.images[activeGallery.index].src}
                     alt={activeGallery.images[activeGallery.index].alt}
-                    className="max-h-[85vh] sm:max-h-[88vh] max-w-full object-contain rounded-[8px] drop-shadow-2xl select-none"
+                    draggable={false}
+                    className="max-h-[85vh] sm:max-h-[88vh] max-w-full object-contain rounded-[8px] drop-shadow-2xl select-none pointer-events-none"
                   />
                 </motion.div>
               </AnimatePresence>

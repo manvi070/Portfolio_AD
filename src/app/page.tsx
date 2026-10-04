@@ -11,7 +11,7 @@ export default function Home() {
       className="relative flex flex-col min-h-screen pb-12 bg-repeat bg-top bg-fixed transition-all duration-700 bg-[url('/images/landing/beige_gingham_bg.png')] [background-size:280px_auto] sm:[background-size:360px_auto] md:[background-size:420px_auto]"
     >
       {/* 1. Hero Section: Stationary sticky top */}
-      <div className="sticky top-0 z-10 w-full min-h-screen">
+      <div className="sticky top-0 z-10 w-full min-h-screen min-h-[100dvh]">
         <Hero />
       </div>
 

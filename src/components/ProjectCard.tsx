@@ -27,7 +27,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             src={project.image}
             alt={project.title}
             onError={() => setImgError(true)}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 pointer-events-none"
+            className="w-full h-full object-cover pointer-events-none"
             draggable={false}
           />
         ) : (
@@ -36,6 +36,9 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             <span className="text-[10px] opacity-70 mt-1">{project.image.split("/").pop()}</span>
           </div>
         )}
+
+        {/* Hover overlay: #000000 at 20% opacity */}
+        <div className="absolute inset-0 bg-[#000000]/0 group-hover:bg-[#000000]/20 transition-colors duration-300 pointer-events-none" />
 
         {/* Subtle inner border */}
         <div className="absolute inset-0 rounded-2xl lg:rounded-[22px] border border-black/5 dark:border-white/10 pointer-events-none" />

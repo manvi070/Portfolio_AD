@@ -27,7 +27,7 @@ export default function Hero() {
   ];
 
   return (
-    <section id="hero" className="relative flex min-h-screen flex-col items-center justify-between overflow-hidden pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 md:pb-12 bg-transparent">
+    <section id="hero" className="relative flex min-h-screen min-h-[100dvh] flex-col items-center justify-between overflow-hidden pt-24 sm:pt-28 md:pt-32 pb-6 sm:pb-8 md:pb-12 bg-transparent">
       
       {/* Main Content Wrapper with Scroll Fade */}
       <motion.div 
@@ -55,7 +55,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="w-full max-w-6xl xl:max-w-7xl mt-auto mb-2 sm:mb-4 md:mb-6"
+          className="w-full max-w-6xl xl:max-w-7xl mt-auto mb-[20px] sm:mb-5 md:mb-6"
         >
           <div className="relative w-full rounded-3xl sm:rounded-[36px] py-3 sm:py-4 px-0 overflow-hidden bg-transparent border-none shadow-none transition-all duration-300 [mask-image:linear-gradient(to_right,transparent_0%,black_36px,black_calc(100%-36px),transparent_100%)] [-webkit-mask-image:linear-gradient(to_right,transparent_0%,black_36px,black_calc(100%-36px),transparent_100%)]">
             {/* Seamless Infinite Horizontal Moving Row */}

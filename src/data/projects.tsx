@@ -33,14 +33,14 @@ export const projectsData: ProjectItem[] = [
     link: "/projects/inlay",
   },
   {
-    id: "lamp",
+    id: "entwined",
     number: "03.",
     numberColor: "text-[#D45828] dark:text-[#F68A5E]",
     category: "Home Decor",
-    title: "Tangled",
+    title: "Entwined",
     bgGradient: "bg-gradient-to-b from-[#FDF5ED] via-[#F4B982] to-[#C8481E] dark:from-[#33180E] dark:via-[#261008] dark:to-[#170804]",
     image: "/images/projects/Lamp/2.png",
-    link: "https://www.behance.net/gallery/192140737/TANGLED",
+    link: "/projects/entwined",
   },
   {
     id: "bloom",

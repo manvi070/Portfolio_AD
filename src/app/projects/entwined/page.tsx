@@ -8,10 +8,10 @@ import Contact from "@/components/Contact";
 
 /**
  * -----------------------------------------------------------------------
- * BLOOM PROJECT TEMPLATE (Mirrored from Inlay layout)
+ * ENTWINED PROJECT TEMPLATE (Mirrored from Bloom layout)
  * -----------------------------------------------------------------------
  * You can replace text descriptions, titles, and image paths below.
- * Add/replace project assets in: /public/images/projects/Bloom/...
+ * Add/replace project assets in: /public/images/projects/Lamp/...
  */
 
 // 1. Switchable exploration tabs data
@@ -23,7 +23,7 @@ export interface ExplorationImage {
 }
 
 export interface ExplorationTabItem {
-  id: "explorations" | "renders" | "pattern";
+  id: "explorations" | "renders" | "specs";
   label: string;
   images: readonly ExplorationImage[];
 }
@@ -35,39 +35,33 @@ const explorationTabs: readonly ExplorationTabItem[] = [
     images: [
       {
         id: "sketch",
-        src: "/images/projects/Bloom/sketch.png",
-        alt: "Bloom Concept Explorations",
+        src: "/images/projects/Lamp/sketch.png",
+        alt: "Entwined Concept Explorations",
         title: "Concept Explorations & Form Studies",
       },
     ],
   },
   {
     id: "renders",
-    label: "3d model",
+    label: "3d renders",
     images: [
       {
-        id: "render-16",
-        src: "/images/projects/Bloom/16.png",
-        alt: "Bloom 3D CAD Renders & Table Top Shape Development",
-        title: "Table Top Shape Development & 3D Model",
+        id: "render-1",
+        src: "/images/projects/Lamp/renders.png",
+        alt: "Entwined 3D CAD Renders & Geometry",
+        title: "Acoustic Geometry & 3D Model",
       },
     ],
   },
   {
-    id: "pattern",
-    label: "final pattern",
+    id: "specs",
+    label: "Technical specs",
     images: [
       {
-        id: "pattern-17",
-        src: "/images/projects/Bloom/17.png",
-        alt: "Bloom Botanical Pattern Motifs Variation 1",
-        title: "Botanical Motifs - Outline & Colored Details",
-      },
-      {
-        id: "pattern-18",
-        src: "/images/projects/Bloom/18.png",
-        alt: "Bloom Botanical Pattern Motifs Variation 2",
-        title: "Botanical Motifs - Extended Composition",
+        id: "technical-specs",
+        src: "/images/projects/Lamp/final s.png",
+        alt: "Entwined Technical Specifications",
+        title: "Technical Specifications & Conduit Dimensions",
       },
     ],
   },
@@ -75,52 +69,51 @@ const explorationTabs: readonly ExplorationTabItem[] = [
 
 type TabId = (typeof explorationTabs)[number]["id"];
 
-export interface ProductItem {
+export interface FinalProductItem {
   id: string;
-  number: string;
-  name: string;
-  description: React.ReactNode;
-  images: readonly {
-    id: string;
-    src: string;
-    alt: string;
-    title: string;
-  }[];
+  src: string;
+  alt: string;
+  title: string;
+  badge: string;
 }
 
-// 2. Final Product images & description data
-const finalProductImages = [
+// 2. Final Product images & description data (2 full-sized shots + 2 detail shots)
+const finalProductImages: readonly FinalProductItem[] = [
   {
-    id: "bloom-final-1",
-    src: "/images/projects/Bloom/1.jpg",
-    alt: "Bloom Final Product - Handcrafted Stool Perspective View",
-    title: "Bloom Stool - Perspective View",
+    id: "img02",
+    src: "/images/projects/Lamp/img02.png",
+    alt: "Entwined Final Product - Full Silhouette View",
+    title: "Full Silhouette Overview",
+    badge: "Full View",
   },
   {
-    id: "bloom-final-2",
-    src: "/images/projects/Bloom/2.jpg",
-    alt: "Bloom Final Product - Elevated Pedestal Detail",
-    title: "Bloom Stool - Elevated Pedestal Detail",
+    id: "img01",
+    src: "/images/projects/Lamp/img01.png",
+    alt: "Entwined Final Product - Bent-Metal Conduit Detail",
+    title: "Acoustic Conduit Detail",
+    badge: "Detail 01",
   },
   {
-    id: "bloom-final-4",
-    src: "/images/projects/Bloom/4.jpg",
-    alt: "Bloom Final Product - Hand-Painted Rangoli Motifs Detail",
-    title: "Bloom Stool - Hand-Painted Rangoli Motifs",
+    id: "img03",
+    src: "/images/projects/Lamp/img03.png",
+    alt: "Entwined Final Product - Structural Geometry Detail",
+    title: "Base & Geometry Detail",
+    badge: "Detail 02",
   },
   {
-    id: "bloom-final-5",
-    src: "/images/projects/Bloom/5.jpg",
-    alt: "Bloom Final Product - Full Silhouette View",
-    title: "Bloom Stool - Silhouette View",
+    id: "img04",
+    src: "/images/projects/Lamp/img04.png",
+    alt: "Entwined Final Product - Ambient Illumination Perspective",
+    title: "Ambient Illumination",
+    badge: "Perspective",
   },
-] as const;
+];
 
 const finalProductDescription =
-  "The fluid silhouette evokes a blossomed petal form, complemented by hand-painted motifs inspired by traditional rangoli art. An elevated pillar functions as a dedicated pedestal for a diya or incense, grounding the piece in purification, warmth, and quiet celebration.";
+  "Entwined reinterprets this functional morphology: three slender metallic conduits rise from a grounded wooden plinth, twisting in an organic, rhythmic braid before parting into distinct directional branches. Each conduit terminates in an acoustic bell-shaped shade that serves as a directional reflector, spreading a warm, enveloping glow reminiscent of a resonant chord.";
 
-export default function BloomProjectPage() {
-  const [activeTab, setActiveTab] = useState<TabId>("explorations");
+export default function EntwinedProjectPage() {
+  const [activeTab, setActiveTab] = useState<TabId>("renders");
   const currentTab = explorationTabs.find((tab) => tab.id === activeTab) || explorationTabs[0];
 
   const [activeGallery, setActiveGallery] = useState<{
@@ -299,10 +292,10 @@ export default function BloomProjectPage() {
             Work
           </Link>
           <span>/</span>
-          <span className="text-stone-900 font-semibold">Bloom</span>
+          <span className="text-stone-900 font-semibold">Entwined</span>
         </motion.div>
 
-        {/* HERO & BRIEF SECTION: Full Image 5.png on Left (scaled to fit viewport), Title/Furniture/CTA/Brief on Right */}
+        {/* HERO & BRIEF SECTION: Full Image hero.png on Left (scaled to fit viewport), Title/Home Decor/CTA/Concept on Right */}
         <motion.section
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -311,28 +304,28 @@ export default function BloomProjectPage() {
         >
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
             
-            {/* Left Column: Full Image (5.png) scaled down to fit viewport */}
+            {/* Left Column: Full Image (hero.png) scaled down to fit viewport */}
             <div className="w-full flex items-center justify-center">
               <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl shadow-md border border-black/8 bg-stone-50 max-h-[66vh] sm:max-h-[70vh] lg:max-h-[75vh] flex items-center justify-center">
                 <img
-                  src="/images/projects/Bloom/5.png"
-                  alt="Bloom Project Cover"
-                  className="w-auto h-auto max-h-[66vh] sm:max-h-[70vh] lg:max-h-[75vh] max-w-full object-contain block rounded-2xl sm:rounded-3xl select-none"
+                  src="/images/projects/Lamp/hero.png"
+                  alt="Entwined Table Luminaire Hero"
+                  className="w-auto h-auto max-h-[66vh] sm:max-h-[70vh] lg:max-h-[75vh] max-w-full object-contain block select-none"
                   loading="eager"
                 />
               </div>
             </div>
 
-            {/* Right Column: Title, Subtitle, CTA & Brief */}
+            {/* Right Column: Title, Subtitle, CTA & Concept */}
             <div className="flex flex-col gap-6 sm:gap-8 justify-center">
               
               {/* Title & Subtitle */}
               <div className="flex flex-col gap-2">
                 <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-mono font-bold tracking-tight text-stone-950">
-                  Bloom
+                  Entwined
                 </h1>
                 <span className="text-lg sm:text-xl md:text-2xl font-mono text-stone-700 font-medium tracking-tight">
-                  Furniture
+                  Home Decor
                 </span>
               </div>
 
@@ -344,10 +337,10 @@ export default function BloomProjectPage() {
                     e.preventDefault();
                     document.getElementById("final-product")?.scrollIntoView({ behavior: "smooth" });
                   }}
-                  className="group inline-flex items-center gap-2.5 self-start px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-gradient-to-r from-[#ffe4ec]/95 via-[#fcd0df]/90 to-[#f9b8cf]/95 hover:from-[#fff0f5] hover:via-[#fde2ec] hover:to-[#fbc8db] text-[#831843] hover:text-[#500724] border border-[#f472b6]/40 hover:border-[#db2777]/60 backdrop-blur-md shadow-[0_4px_18px_rgba(219,39,119,0.22)] hover:shadow-[0_6px_24px_rgba(219,39,119,0.35)] text-xs sm:text-sm font-mono font-semibold transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
+                  className="group inline-flex items-center gap-2.5 self-start px-5 py-2.5 sm:px-6 sm:py-3 rounded-full bg-gradient-to-r from-[#ffedd5]/95 via-[#fed7aa]/90 to-[#fdba74]/95 hover:from-[#fff7ed] hover:via-[#ffedd5] hover:to-[#fed7aa] text-[#9a3412] hover:text-[#7c2d12] border border-[#fb923c]/40 hover:border-[#ea580c]/60 backdrop-blur-md shadow-[0_4px_18px_rgba(234,88,12,0.22)] hover:shadow-[0_6px_24px_rgba(234,88,12,0.35)] text-xs sm:text-sm font-mono font-semibold transition-all duration-300 hover:-translate-y-0.5 cursor-pointer"
                 >
                   <span className="tracking-tight">See Final Product</span>
-                  <ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#be185d] group-hover:text-[#831843] transition-transform duration-300 group-hover:translate-y-0.5" />
+                  <ArrowDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#c2410c] group-hover:text-[#9a3412] transition-transform duration-300 group-hover:translate-y-0.5" />
                 </a>
               </div>
 
@@ -358,7 +351,7 @@ export default function BloomProjectPage() {
                 </h2>
 
                 <p className="text-sm sm:text-base md:text-[17px] text-stone-600 leading-relaxed font-sans font-normal">
-                  Bloom translates the festive spirit of Indian homes into contemporary furniture. Inspired by the indian festivals and traditional botanical enameling, reimagines sacred celebration for modern living. Its organic tri-lobed silhouette echoes a flower in bloom.
+                  Entwined is an ambient table luminaire inspired by the winding tubing and acoustic geometry of brass wind instruments. By translating the fluid paths of sound waves and instrument conduits into bent-metal structural forms, the lamp explores the visual and atmospheric relationship between resonance and illumination.
                 </p>
               </div>
 
@@ -377,8 +370,12 @@ export default function BloomProjectPage() {
         >
           <div className="w-full overflow-hidden rounded-2xl sm:rounded-3xl border border-black/8 shadow-md bg-stone-50">
             <img
-              src="/images/projects/Bloom/board.png"
-              alt="Bloom Concept & Moodboard"
+              src="/images/projects/Lamp/board.png"
+              onError={(e) => {
+                // Graceful fallback to hero.png if board.png is not yet added
+                (e.currentTarget as HTMLImageElement).src = "/images/projects/Lamp/hero.png";
+              }}
+              alt="Entwined Concept & Moodboard"
               className="w-full h-auto object-cover rounded-2xl sm:rounded-3xl select-none block"
               loading="lazy"
             />
@@ -410,8 +407,8 @@ export default function BloomProjectPage() {
                   >
                     {isSelected && (
                       <motion.div
-                        layoutId="bloomActiveTab"
-                        className="absolute inset-0 rounded-full bg-gradient-to-r from-[#ffe4ec]/80 via-[#fcd0df]/90 to-[#f9b8cf]/80 border border-[#f472b6]/45 backdrop-blur-md shadow-[0_2px_14px_rgba(219,39,119,0.18)]"
+                        layoutId="entwinedActiveTab"
+                        className="absolute inset-0 rounded-full bg-gradient-to-r from-[#ffedd5]/80 via-[#fed7aa]/90 to-[#fdba74]/80 border border-[#fb923c]/45 backdrop-blur-md shadow-[0_2px_14px_rgba(234,88,12,0.18)]"
                         transition={{ type: "spring", stiffness: 420, damping: 32 }}
                       />
                     )}
@@ -474,8 +471,12 @@ export default function BloomProjectPage() {
         >
           <div className="w-full overflow-hidden rounded-2xl sm:rounded-3xl border border-black/8 shadow-md bg-stone-50">
             <img
-              src="/images/projects/Bloom/process.png"
-              alt="Bloom Making & Prototyping Process"
+              src="/images/projects/Lamp/process.png"
+              onError={(e) => {
+                // Graceful fallback to render.png if process.png is not yet added
+                (e.currentTarget as HTMLImageElement).src = "/images/projects/Lamp/render.png";
+              }}
+              alt="Entwined Making & Prototyping Process"
               className="w-full h-auto object-cover rounded-2xl sm:rounded-3xl select-none block"
               loading="lazy"
             />
@@ -484,14 +485,14 @@ export default function BloomProjectPage() {
 
       </div>
 
-      {/* FINAL PRODUCT SECTION - Soft Pink (#FFE5E5) Background */}
+      {/* FINAL PRODUCT SECTION - Warm Cream (#FEF1D7) Background */}
       <motion.section
         id="final-product"
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="w-full bg-[#FFE5E5] text-[#1a1a1a] pt-10 sm:pt-20 md:pt-24 pb-20 sm:pb-28 md:pb-32 mt-8 sm:mt-16 md:mt-24 px-4 sm:px-8 md:px-12 lg:px-[100px] scroll-mt-20 flex flex-col gap-8 sm:gap-12"
+        className="w-full bg-[#FEF1D7] text-[#1a1a1a] pt-10 sm:pt-20 md:pt-24 pb-20 sm:pb-28 md:pb-32 mt-8 sm:mt-16 md:mt-24 px-4 sm:px-8 md:px-12 lg:px-[100px] scroll-mt-20 flex flex-col gap-8 sm:gap-12"
       >
         {/* Section Divider & Header */}
         <div className="border-b border-black/10 pb-4 sm:pb-6">
@@ -500,33 +501,153 @@ export default function BloomProjectPage() {
           </h2>
         </div>
 
-        {/* Final Product Description (no title) */}
+        {/* Final Product Description */}
         <p className="text-sm sm:text-base md:text-[17px] text-stone-600 leading-relaxed font-sans font-normal max-w-4xl">
           {finalProductDescription}
         </p>
 
-        {/* 4 Images Stacked Horizontally Under Description */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 md:gap-5 w-full">
-          {finalProductImages.map((img, imgIdx) => (
+        {/* Editorial Dynamic Gallery: Two full-sized shots bookend the two stacked detail shots */}
+        <div className="w-full">
+          {/* Desktop & Tablet: Balanced 3-Column Triptych Grid */}
+          <div className="hidden md:grid md:grid-cols-12 gap-3 sm:gap-4 md:gap-5 w-full md:h-[500px] lg:h-[580px] xl:h-[640px]">
+            {/* Left Column: Full Silhouette (img02) */}
             <div
-              key={img.id}
-              onClick={() => setActiveGallery({ images: finalProductImages, index: imgIdx })}
-              className="group relative aspect-[3/4] w-full rounded-[8px] sm:rounded-[10px] border border-black/10 overflow-hidden cursor-pointer bg-stone-50 shadow-sm transition-all duration-300 hover:border-black/30 hover:shadow-md"
+              onClick={() => setActiveGallery({ images: finalProductImages, index: 0 })}
+              className="col-span-4 h-full min-h-0 group relative rounded-xl sm:rounded-2xl border border-black/10 overflow-hidden cursor-pointer bg-stone-50 shadow-sm transition-all duration-500 hover:border-black/30 hover:shadow-xl"
               title="Click to open full preview"
             >
               <img
-                src={img.src}
-                alt={img.alt}
+                src={finalProductImages[0].src}
+                alt={finalProductImages[0].alt}
                 className="w-full h-full object-cover object-center select-none"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-200 flex items-end justify-end p-2 sm:p-2.5 pointer-events-none">
-                <span className="p-1.5 rounded-[4px] bg-black/75 text-white/95 opacity-0 group-hover:opacity-100 transition-opacity duration-200 backdrop-blur-sm shadow-md">
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-end justify-end p-2.5 sm:p-3 pointer-events-none">
+                <span className="p-1.5 sm:p-2 rounded-full bg-black/75 text-white/95 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0 backdrop-blur-md shadow-md border border-white/10">
                   <Maximize2 className="w-3.5 h-3.5" />
                 </span>
               </div>
             </div>
-          ))}
+
+            {/* Center Column: Two Stacked Detail Vignettes (img01 & img03) */}
+            <div className="col-span-4 h-full min-h-0 flex flex-col gap-3 sm:gap-4 md:gap-5">
+              {/* Detail 1 (img01) */}
+              <div
+                onClick={() => setActiveGallery({ images: finalProductImages, index: 1 })}
+                className="flex-1 h-full min-h-0 group relative rounded-xl sm:rounded-2xl border border-black/10 overflow-hidden cursor-pointer bg-stone-50 shadow-sm transition-all duration-500 hover:border-black/30 hover:shadow-xl"
+                title="Click to open full preview"
+              >
+                <img
+                  src={finalProductImages[1].src}
+                  alt={finalProductImages[1].alt}
+                  className="w-full h-full object-cover object-center select-none"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-end justify-end p-2.5 sm:p-3 pointer-events-none">
+                  <span className="p-1.5 sm:p-2 rounded-full bg-black/75 text-white/95 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0 backdrop-blur-md shadow-md border border-white/10">
+                    <Maximize2 className="w-3.5 h-3.5" />
+                  </span>
+                </div>
+              </div>
+
+              {/* Detail 2 (img03) */}
+              <div
+                onClick={() => setActiveGallery({ images: finalProductImages, index: 2 })}
+                className="flex-1 h-full min-h-0 group relative rounded-xl sm:rounded-2xl border border-black/10 overflow-hidden cursor-pointer bg-stone-50 shadow-sm transition-all duration-500 hover:border-black/30 hover:shadow-xl"
+                title="Click to open full preview"
+              >
+                <img
+                  src={finalProductImages[2].src}
+                  alt={finalProductImages[2].alt}
+                  className="w-full h-full object-cover object-center select-none"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-end justify-end p-2.5 sm:p-3 pointer-events-none">
+                  <span className="p-1.5 sm:p-2 rounded-full bg-black/75 text-white/95 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0 backdrop-blur-md shadow-md border border-white/10">
+                    <Maximize2 className="w-3.5 h-3.5" />
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right Column: Full Silhouette / Ambient Perspective (img04) */}
+            <div
+              onClick={() => setActiveGallery({ images: finalProductImages, index: 3 })}
+              className="col-span-4 h-full min-h-0 group relative rounded-xl sm:rounded-2xl border border-black/10 overflow-hidden cursor-pointer bg-stone-50 shadow-sm transition-all duration-500 hover:border-black/30 hover:shadow-xl"
+              title="Click to open full preview"
+            >
+              <img
+                src={finalProductImages[3].src}
+                alt={finalProductImages[3].alt}
+                className="w-full h-full object-cover object-center select-none"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-end justify-end p-2.5 sm:p-3 pointer-events-none">
+                <span className="p-1.5 sm:p-2 rounded-full bg-black/75 text-white/95 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-1 group-hover:translate-y-0 backdrop-blur-md shadow-md border border-white/10">
+                  <Maximize2 className="w-3.5 h-3.5" />
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile: Dynamic Stack (Full -> Details Grid -> Full) */}
+          <div className="flex flex-col md:hidden gap-3.5 w-full">
+            {/* Full 1 (img02) */}
+            <div
+              onClick={() => setActiveGallery({ images: finalProductImages, index: 0 })}
+              className="group relative aspect-[3/4] w-full rounded-xl border border-black/10 overflow-hidden cursor-pointer bg-stone-50 shadow-sm"
+            >
+              <img
+                src={finalProductImages[0].src}
+                alt={finalProductImages[0].alt}
+                className="w-full h-full object-cover object-center select-none"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-200 pointer-events-none" />
+            </div>
+
+            {/* Side-by-side details (img01 & img03) */}
+            <div className="grid grid-cols-2 gap-3 w-full aspect-[3/2]">
+              <div
+                onClick={() => setActiveGallery({ images: finalProductImages, index: 1 })}
+                className="group relative h-full w-full rounded-xl border border-black/10 overflow-hidden cursor-pointer bg-stone-50 shadow-sm"
+              >
+                <img
+                  src={finalProductImages[1].src}
+                  alt={finalProductImages[1].alt}
+                  className="w-full h-full object-cover object-center select-none"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-200 pointer-events-none" />
+              </div>
+              <div
+                onClick={() => setActiveGallery({ images: finalProductImages, index: 2 })}
+                className="group relative h-full w-full rounded-xl border border-black/10 overflow-hidden cursor-pointer bg-stone-50 shadow-sm"
+              >
+                <img
+                  src={finalProductImages[2].src}
+                  alt={finalProductImages[2].alt}
+                  className="w-full h-full object-cover object-center select-none"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-200 pointer-events-none" />
+              </div>
+            </div>
+
+            {/* Full 2 (img04) */}
+            <div
+              onClick={() => setActiveGallery({ images: finalProductImages, index: 3 })}
+              className="group relative aspect-[3/4] w-full rounded-xl border border-black/10 overflow-hidden cursor-pointer bg-stone-50 shadow-sm"
+            >
+              <img
+                src={finalProductImages[3].src}
+                alt={finalProductImages[3].alt}
+                className="w-full h-full object-cover object-center select-none"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-200 pointer-events-none" />
+            </div>
+          </div>
         </div>
 
         {/* Bottom Navigation: Back to Work Button */}
